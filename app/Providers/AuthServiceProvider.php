@@ -31,8 +31,8 @@ class AuthServiceProvider extends ServiceProvider
 
 
         Passport::routes();
-        Passport::tokensExpireIn(Carbon::now()->addDays(1));
-        Passport::refreshTokensExpireIn(Carbon::now()->addDays(3));
+        Passport::tokensExpireIn(Carbon::now()->addMinutes(30));
+        Passport::refreshTokensExpireIn(Carbon::now()->addMinutes(180));
 
         Auth::provider('external-user', function ($app, array $config) {
             return new ExternalUserUserProvider();
