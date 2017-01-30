@@ -21,6 +21,9 @@ Route::get('logout', 'Auth\LoginController@logout')
     ->name('logout');
 
 
+Route::get('dummy', function(){
+    return response([11,22,33], 200);
+});
 
 Route::group([
     'middleware' => 'auth:api',
