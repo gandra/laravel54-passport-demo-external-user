@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Extensions\ExternalUserUserProvider;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Laravel\Passport\Passport;
@@ -32,5 +34,9 @@ class AuthServiceProvider extends ServiceProvider
         Passport::tokensExpireIn(Carbon::now()->addDays(1));
 
         Passport::refreshTokensExpireIn(Carbon::now()->addDays(3));
+
+        Auth::provider('external-user', function ($app, array $config) {
+            return new ExternalUserUserProvider();
+        });
     }
 }
