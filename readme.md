@@ -1,6 +1,9 @@
 # Laravel 5.4 passport demo
 
 This is demo project  ofr laravel backend API server which authenticates using external users.
+External users table is simulated with `temp_external_users` table and access to this table is via view `v_users`.
+`App\MyUser` is model which is connected to this view.
+Custom user provider is `App\Extensions\ExternalUserUserProvider`
 
 
 ## Setup
@@ -14,6 +17,7 @@ php artisan key:generate
 npm install
 npm run dev
 php artisan migrate
+php artisan db:seed
 php artisan passport:install
 ```
 
