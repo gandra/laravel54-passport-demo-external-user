@@ -166,4 +166,12 @@ class CustomUser implements UserContract
     {
         return $this->getAttribute($this->getAuthIdentifier());
     }
+
+    public function getUserData()
+    {
+        return [
+            "attributes" => $this->attributes,
+            "accessToken" => $this->accessToken
+        ];
+    }
 }

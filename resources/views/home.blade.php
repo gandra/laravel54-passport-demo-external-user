@@ -10,4 +10,10 @@
         </div>
     </div>
 </div>
+
+    <div>
+
+        {{ dd(Auth::user()) }}
+
+    </div>
 @endsection

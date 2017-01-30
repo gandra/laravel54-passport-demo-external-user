@@ -23,3 +23,7 @@ Route::get('logout', 'Auth\LoginController@logout')
 Route::get('test', 'Api\TesterController@test')
     ->name('test')
     ->middleware('auth:api');
+
+Route::get('test/user-data', 'Api\TesterController@testUserData')
+    ->name('test.user-data')
+    ->middleware('auth:api');
