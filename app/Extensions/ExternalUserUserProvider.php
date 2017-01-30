@@ -22,6 +22,8 @@ class ExternalUserUserProvider implements IlluminateUserProvider
     {
         // PERFORM THE CALL TO MY BACK END WB SERVICE AND CREATE A NEW MyUser USING THESE INFORMATION:
 
+//        dd($identifier);
+
 //        $attributes = array(
 //            'id' => '359-k',
 //            'username' => '359-k',
@@ -54,9 +56,11 @@ class ExternalUserUserProvider implements IlluminateUserProvider
 
         // TODO: Implement retrieveByCredentials() method.
 
-//        \Log::info('retrieveByCredentials START');
-//        \Log::info('INSERTED USER CREDENTIAL: '.$credentials['username'] . ' ' .$credentials['password']);
-//
+//        dd($credentials);
+
+        \Log::info('retrieveByCredentials START');
+        \Log::info('INSERTED USER CREDENTIAL: '.$credentials['username'] . ' ' .$credentials['password']);
+
 //        $attributes = array(
 //            'id' => '359-k',
 //            'username' => '359-k',
@@ -72,7 +76,9 @@ class ExternalUserUserProvider implements IlluminateUserProvider
 
 
         $user = MyUser::where('username', '=', $credentials['username'])->where('password', '=', $credentials['password'])->firstOrFail();
+//        dd($user);
         return $user;
+//        return $user->getCustomUser();
     }
 
     public function validateCredentials(Authenticatable $user, array $credentials)

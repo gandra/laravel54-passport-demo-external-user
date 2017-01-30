@@ -21,6 +21,8 @@ class MyUser extends Authenticatable
     protected $fillable = [
         'id', 'username', 'email', 'password',
     ];
+    protected $keyType = 'string';
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -52,4 +54,10 @@ class MyUser extends Authenticatable
     {
         return 'username';
     }
+
+    public function getKeyType()
+    {
+        return $this->keyType;
+    }
+
 }
