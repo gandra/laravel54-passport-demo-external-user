@@ -16,14 +16,18 @@ class ExternalUserUserProvider implements IlluminateUserProvider
 
     public function retrieveById($identifier)
     {
+
+//        var_dump($identifier);
+//        die();
         // TODO: Implement retrieveById() method.
         \Log::info('retrieveById START ... identifier: ' . $identifier);
 
         // PERFORM THE CALL TO MY BACK END WB SERVICE AND CREATE A NEW CustomUser USING THESE INFORMATION:
 
         $attributes = array(
-            'custom_id' => '359-k',
-            'custom_password' => \Hash::make('SuperSecret'),
+            'id' => '359-k',
+            'username' => '359-k',
+            'password' => \Hash::make('SuperSecret'),
             'name' => 'Dummy User 1',
         );
 
@@ -50,13 +54,14 @@ class ExternalUserUserProvider implements IlluminateUserProvider
         // TODO: Implement retrieveByCredentials() method.
 
         \Log::info('retrieveByCredentials START');
-        \Log::info('INSERTED USER CREDENTIAL: '.$credentials['rut'] . ' ' .$credentials['password']);
+        \Log::info('INSERTED USER CREDENTIAL: '.$credentials['username'] . ' ' .$credentials['password']);
 
         //$user = new User('Pippo', 'pippo@google.com', true);
 
         $attributes = array(
-            'custom_id' => '359-k',
-            'custom_password' => \Hash::make('SuperSecret'),
+            'id' => '359-k',
+            'username' => '359-k',
+            'password' => \Hash::make('SuperSecret'),
             'name' => 'Dummy User 2',
         );
 
@@ -73,14 +78,6 @@ class ExternalUserUserProvider implements IlluminateUserProvider
     {
         // TODO: Implement validateCredentials() method.
         \Log::info('validateCredentials START');
-        // dd($credentials);
-        $rut = $credentials['rut'];
-        $password = $credentials['password'];
-        $credentialsNew = [
-            'rut' => $rut,
-            'password' => $password
-        ];
-
         return true;
     }
 

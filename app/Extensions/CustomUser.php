@@ -43,7 +43,7 @@ class CustomUser implements UserContract
      */
     public function getAuthIdentifierName()
     {
-        return 'custom_id';
+        return 'username';
     }
 
     /**
@@ -169,8 +169,12 @@ class CustomUser implements UserContract
 
     public function getUserData()
     {
+        $attributesCopy = $this->attributes;
+        unset($attributesCopy['custom_password']);
+        unset($attributesCopy['password']);
+
         return [
-            "attributes" => $this->attributes,
+            "attributes" => $attributesCopy,
             "accessToken" => $this->accessToken
         ];
     }
