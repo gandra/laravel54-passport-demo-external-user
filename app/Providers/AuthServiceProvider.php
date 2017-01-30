@@ -29,14 +29,18 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+
         Passport::routes();
-
         Passport::tokensExpireIn(Carbon::now()->addDays(1));
-
         Passport::refreshTokensExpireIn(Carbon::now()->addDays(3));
 
         Auth::provider('external-user', function ($app, array $config) {
             return new ExternalUserUserProvider();
         });
+    }
+
+    public function register()
+    {
+        Passport::ignoreMigrations();
     }
 }

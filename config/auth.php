@@ -73,7 +73,7 @@ return [
 
         'users' => [
             'driver' => 'external-user',
-            'model' => \App\Extensions\CustomUser::class,
+            'model' => \App\MyUser::class,
         ],
 
 //        'users' => [

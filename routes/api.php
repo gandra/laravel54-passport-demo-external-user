@@ -20,10 +20,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('logout', 'Auth\LoginController@logout')
     ->name('logout');
 
-Route::get('test', 'Api\TesterController@test')
-    ->name('test')
-    ->middleware('auth:api');
 
-Route::get('test/user-data', 'Api\TesterController@testUserData')
-    ->name('test.user-data')
-    ->middleware('auth:api');
+
+Route::group([
+    'middleware' => 'auth:api',
+], function () {
+
+    Route::get('/', function (Request $request) {
+        return 'API :)';
+    })->name('api.home');
+
+    Route::get('test', 'Api\TesterController@test')
+        ->name('api.test');
+
+    Route::get('test/user-data', 'Api\TesterController@testUserData')
+        ->name('api.test.user-data');
+});

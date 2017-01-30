@@ -15,6 +15,6 @@ class TesterController extends Controller
 
     public function testUserData()
     {
-        return json_encode(Auth::user()->getUserData());
+        return json_encode(Auth::user());
     }
 }
